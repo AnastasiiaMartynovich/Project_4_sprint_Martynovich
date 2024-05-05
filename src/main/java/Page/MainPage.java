@@ -73,6 +73,10 @@ public class MainPage {
     //Текст ответа на вопрос "Я живу за МКАДом, привезёте?"
     private By textAnswerDeliveryAfterMKAD = By.xpath("//div[@class='Home_FAQ__3uVm4']//p[text()='Да, обязательно. Всем самокатов! И Москве, и Московской области.']");
 
+
+    final By[] buttons = {buttonQuestionCoast, buttonQuestionFewScooters, buttonQuestionTimeRent, buttonQuestionOrderToday, buttonQuestionExtendAndReturn, buttonQuestionCharger, buttonQuestionCancelOrder, buttonQuestionDeliveryAfterMKAD};
+    final By[] locators = {textAnswerCoast, textAnswerFewScooters, textAnswerTimeRent, textAnswerOrderToday, textAnswerExtendAndReturn, textAnswerCharger, textAnswerCancelOrder, textAnswerDeliveryAfterMKAD};
+
     //Клик по кнопке "Заказать" в верхнем меню
         public void clickOrderButtonMenu() {
 
@@ -95,8 +99,6 @@ public class MainPage {
     }
     //Проверка текста
     public void checkAllLocators(int index, String expectedResult) {
-        By[] buttons = {buttonQuestionCoast, buttonQuestionFewScooters, buttonQuestionTimeRent, buttonQuestionOrderToday, buttonQuestionExtendAndReturn, buttonQuestionCharger, buttonQuestionCancelOrder, buttonQuestionDeliveryAfterMKAD};
-        By[] locators = {textAnswerCoast, textAnswerFewScooters, textAnswerTimeRent, textAnswerOrderToday, textAnswerExtendAndReturn, textAnswerCharger, textAnswerCancelOrder, textAnswerDeliveryAfterMKAD};
 
         driver.findElement(buttons[index]).click();
         String actualText = driver.findElement(locators[index]).getText();

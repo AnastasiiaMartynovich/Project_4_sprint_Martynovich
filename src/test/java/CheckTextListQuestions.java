@@ -1,20 +1,15 @@
+import Browser.BrowserSelection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import Page.MainPage;
 import org.openqa.selenium.WebDriver;
-import org.junit.After;
-import org.junit.Before;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.chrome.ChromeDriver;
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 
 @RunWith(Parameterized.class)
-public class CheckTextListQuestions {
+public class CheckTextListQuestions extends BrowserSelection {
 
     WebDriver driver;
     MainPage mainPage;
@@ -40,13 +35,6 @@ public class CheckTextListQuestions {
         this.expectedResult = expectedResult;
     }
 
-    @Before
-    public void startUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        }
-
     @Test
     public void check() {
 
@@ -57,9 +45,5 @@ public class CheckTextListQuestions {
         mainPage.checkAllLocators(index, expectedResult);
     }
 
-    @After
-    public void clean() {
-        // Закрой браузер
-        driver.quit();
-    }
+
 }

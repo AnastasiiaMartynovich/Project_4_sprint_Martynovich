@@ -1,6 +1,4 @@
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Before;
+import Browser.BrowserSelection;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -9,14 +7,11 @@ import Page.OneOrderPage;
 import Page.TwoOrderPage;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 
 
 @RunWith(Parameterized.class)
-public class TestNewOrder {
+public class TestNewOrder extends BrowserSelection {
 
     WebDriver driver;
     MainPage mainPage;
@@ -48,12 +43,6 @@ public class TestNewOrder {
         });
     }
 
-    @Before
-    public void startUp() {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-    }
     @Test
     public void orderButtonMenu() {
         driver.get("https://qa-scooter.praktikum-services.ru/");
@@ -113,9 +102,5 @@ public class TestNewOrder {
         twoOrderPage.checkWindowСonfirmationNewOrder();
     }
 
-    @After
-    public void clean() {
-        // Закрой браузер
-        driver.quit();
-    }
+
 }
